@@ -1,0 +1,47 @@
+<div class="lg:flex justify-between ">
+    <div class="lg:w-1/2  flex-grow " style="
+    box-shadow: 1px 1px 8px 4px grey;
+">
+        <div class="py-12 bg-indigo-100 lg:bg-white flex justify-center lg:px-12">
+            <div class="cursor-pointer flex items-center">
+
+                <div class="text-2xl primeColorBg tracking-wide ml-2 font-semibold w-24 h-auto"><img
+                        src="https://cdn2.sbazar.app/383ba026-222a-4a16-8c24-b6f7f7227630"></div>
+            </div>
+        </div>
+        <div class="mt-10 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
+            <h2 class="text-center text-4xl text-indigo-900 font-display font-semibold lg:text-left xl:text-5xl
+            xl:text-bold">Log in</h2>
+            <div class="mt-12">
+                    <div>
+                        <div class="text-sm font-bold text-gray-700 tracking-wide">Username</div>
+                        <input [(ngModel)]="username"
+                            class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+                            type="" placeholder="mike@gmail.com">
+                    </div>
+                    <div class="mt-8">
+                        <div class="flex justify-between items-center">
+                            <div class="text-sm font-bold text-gray-700 tracking-wide">
+                                Password
+                            </div>
+
+                        </div>
+                        <input [(ngModel)]="password"
+                            class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+                            type="" placeholder="Enter your password">
+                    </div>
+                    <div class="mt-10">
+                        <tui-loader  [showLoader]="isLoading">
+                            <button class="primeColorBg text-gray-100 p-4 w-full rounded-full tracking-wide
+                            font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600
+                            shadow-lg" (click)="login()">
+                            Log In
+                        </button>
+                    </tui-loader>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+    <ng-lottie class="h-screen hidden lg:flex w-1/2 justify-end" [options]="options"></ng-lottie>
+</div>
