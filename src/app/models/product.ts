@@ -58,6 +58,7 @@ export interface VarientProduct {
     price:              PriceInfo;
     dimension:          Dimension;
     applyExtraShipping: boolean;
+    skuId:              string;
 }
 
 export interface Dimension {

@@ -59,6 +59,7 @@ import { WarehousePageComponent } from './ui/pages/warehouse-page/warehouse-page
 import { AddWarehouseComponent } from './ui/widgets/add-warehouse/add-warehouse.component';
 import { TuiToolbarModule } from '@taiga-ui/addon-editor';
 import { ProductTileComponent } from './ui/widget/product-tile/product-tile.component';
+import { GenericDialogComponent } from './ui/widgets/generic-dialog/generic-dialog.component';
 export function playerFactory() {
   return player;
 }
@@ -91,6 +92,7 @@ export function playerFactory() {
     WarehousePageComponent,
     AddWarehouseComponent,
     ProductTileComponent,
+    GenericDialogComponent,
   ],
   imports: [
     BrowserModule,
