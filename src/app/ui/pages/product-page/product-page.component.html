@@ -1,1 +1,10 @@
-<p>product-page works!</p>
+<app-page-header [header]="'Product'" (event)="event($event)"></app-page-header>
+<div *ngIf="selectedVarient.length>0" class="flex flex-row justify-start animate__animated animate__flipInX p-2 my-2   bg-white">
+    <div class="btn btn-primary btn-outline btn-sm mx-1" *ngIf="selectedVarient.length==1">Make deal</div>
+    <div class="btn btn-primary btn-outline btn-sm mx-1" *ngIf="selectedVarient.length==2">Make Combo</div>
+    <div class="btn btn-primary btn-outline btn-sm mx-1" *ngIf="selectedVarient.length>2">Make Bundle</div>
+    <div class="btn btn-primary btn-outline btn-sm mx-1" *ngIf="selectedVarient.length>2">Make Collection</div>
+</div>
+
+<app-product-tile *ngFor="let product of products" [product]="product" (variantAdd)="addVarient($event)">
+</app-product-tile>

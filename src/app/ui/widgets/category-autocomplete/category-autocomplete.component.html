@@ -1,0 +1,22 @@
+<form class="w-full" [formGroup]="testForm">
+    <tui-input *tuiLet="users$ | async as users" formControlName="user" [icon]="'tuiIconSearch'"
+        [tuiTextfieldExampleText]="'Product Category'" [tuiTextfieldCleaner]='true' (focusedChange)="focusOut($event)">
+        Product Category
+        <ng-container *ngIf="dropdowndata?.length">
+            <tui-data-list *tuiDataList>
+                <button *ngFor="let user of dropdowndata" tuiOption class="buttonFocus" [value]="user.name"
+                    (click)="onSelect(user)">
+                   <div class="flex flex-row items-center text-lg hover:text-xl hover:text-primary transition-all w-full">
+                    <div class="avatar rounded-md  shadow-md">
+                        <div class="w-12 rounded">
+                          <img [src]="getLogo(user.extraData)" alt="Tailwind-CSS-Avatar-component" />
+                        </div>
+                      </div>  <span class="font-bold ml-2 "> {{user.name}}</span>
+                   </div>
+
+                </button>
+            </tui-data-list>
+        </ng-container>
+    </tui-input>
+
+</form>

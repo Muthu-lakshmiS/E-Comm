@@ -1,0 +1,14 @@
+<div class="card border border-gray-400 p-2">
+    <div class="flex flex-row">
+        <span class="flex-1">{{label}}</span>
+        <div class="btn-group flex-none">
+            <button *ngFor="let language of languages"
+                [ngClass]="language.language==selectedLanguage.language?' btn-sm btn tab-active ':' btn btn-outline btn-sm'"
+                (click)="onLanguageClick(language)"> {{language.text}}</button>
+        </div>
+    </div>
+    <div class=" w-full mt-2 ">
+        <input type="text" [disabled]="!selectedLanguage.language" placeholder="Type here" [(ngModel)]="selectedLanguage.text" (keyup)="textChange()"
+            class="input input-bordered w-full " />
+    </div>
+</div>

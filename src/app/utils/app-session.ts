@@ -2,6 +2,7 @@ export class AppSession {
   static UserProfile = 'userProfile';
   static BusinessProfile = 'businessProfile';
   static LoginAuth = 'loginAuth';
+  static Country = 'country';
 
   public static setValue(sessionKey: string, value: any) {
     if (value && sessionKey) {

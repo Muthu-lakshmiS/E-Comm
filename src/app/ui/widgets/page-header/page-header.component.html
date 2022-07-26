@@ -1,0 +1,15 @@
+<div class="card p-2 m-2 rounded-md shadow-md h-36 backgroundColor">
+    <div class="flex flex-row h-full justify-between  items-center">
+        <div class="flex-none flex flex-row justify-start items-center">
+            <ng-lottie *ngIf="headerAnime" class="h-32 w-32" [options]="headerAnime"></ng-lottie>
+            <span class="  text-2xl font-bold">{{header}}</span>
+        </div>
+        <div class="flex-none"><button (click)="create()" class="btn btn-outline btn-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                        clip-rule="evenodd" />
+                </svg>Create
+            </button></div>
+    </div>
+</div>

@@ -1,0 +1,103 @@
+<div class="flex flex-col">
+
+    <div class="divider"><span class="font-bold text-lg text-primary">Warehouse details</span></div>
+    <tui-loader [showLoader]="isLoading">
+        <div class="flex flex-row">
+            <div class="form-control flex-1 mx-2">
+                <label class="label">
+                    <span class="label-text">Address line 1</span>
+                </label>
+                <input type="text" placeholder="Type here" [(ngModel)]="warehouse.address.line1"
+                    class="input input-bordered w-full " />
+            </div>
+            <div class="form-control flex-1 mx-2">
+                <label class="label">
+                    <span class="label-text">Address line 2</span>
+                </label>
+                <input type="text" placeholder="Type here" [(ngModel)]="warehouse.address.line1"
+                    class="input input-bordered w-full " />
+            </div>
+        </div>
+        <div class="flex flex-row">
+            <div class="form-control flex-1 mx-2">
+                <label class="label">
+                    <span class="label-text">Landmark</span>
+                </label>
+                <input type="text" placeholder="Type here" [(ngModel)]="warehouse.address.landMark"
+                    class="input input-bordered w-full " />
+            </div>
+        </div>
+        <div class="flex flex-row">
+            <div class="form-control flex-1 mx-2">
+                <label class="label">
+                    <span class="label-text">Local Area</span>
+                </label>
+                <input type="text" placeholder="Type here" [(ngModel)]="warehouse.address.localArea"
+                    class="input input-bordered w-full " />
+            </div>
+            <div class="form-control flex-1 mx-2">
+                <label class="label">
+                    <span class="label-text">Zipcode</span>
+                </label>
+                <input type="number" placeholder="Type here" [(ngModel)]="warehouse.address.zipCode"
+                    class="input input-bordered w-full " />
+            </div>
+        </div>
+        <div class="flex flex-row">
+            <div class="form-control flex-1 mx-2">
+                <label class="label">
+                    <span class="label-text">City</span>
+                </label>
+                <input type="text" placeholder="Type here" [(ngModel)]="warehouse.address.city"
+                    class="input input-bordered w-full " />
+            </div>
+            <div class="form-control flex-1 mx-2">
+                <label class="label">
+                    <span class="label-text">Country</span>
+                </label>
+                <input type="text" placeholder="Type here" [(ngModel)]="warehouse.address.country"
+                    class="input input-bordered w-full " />
+            </div>
+        </div>
+        <div class="flex flex-row">
+            <div class="form-control flex-1 mx-2">
+                <label class="label">
+                    <span class="label-text">Contact number</span>
+                </label>
+                <input type="text" placeholder="Type here" [(ngModel)]="warehouse.address.phoneNumber"
+                    class="input input-bordered w-full " />
+            </div>
+            <div class="form-control flex-1 mx-2">
+                <label class="label">
+                    <span class="label-text">Direction comment</span>
+                </label>
+                <input type="text" placeholder="Type here" [(ngModel)]="warehouse.address.directionComment"
+                    class="input input-bordered w-full " />
+            </div>
+        </div>
+        <div class="flex flex-row">
+            <div class="form-control flex-1 mx-2">
+                <label class="label">
+                    <span class="label-text">GPS co-ordinate <a href="https://www.google.com/maps" target="_blank"
+                            [tuiHint]="tooltip" class=" mx-2 btn btn-sm btn-secondary">(Click here find GPS co-ordinate
+                            from address)</a></span>
+                </label>
+                <input type="text" autocomplete="off" placeholder="type latitute,longitute" [(ngModel)]="coOrdinates"
+                    class="input input-bordered w-full border-green-800 " />
+            </div>
+            <ng-template #tooltip>
+
+                <div>1.Open link.</div>
+                <div>2.Search address.</div>
+                <div>3.Right-click the place or area on the map.</div>
+                <div>4.This will open a pop-up window. You can find your latitude and longitude in decimal format at the
+                    top.</div>
+                <div>5.To copy the coordinates automatically, left click on the latitude and longitude.</div>
+            </ng-template>
+        </div>
+        <div class="flex flex-row justify-end my-2">
+
+            <button class="btn btn-primary" (click)="save()">Save</button>
+        </div>
+    </tui-loader>
+</div>

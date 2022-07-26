@@ -1,0 +1,81 @@
+<div class="card shadow-md rounded-md p-2">
+    <div class="flex flex-row ">
+        <input [(ngModel)]="productVarient.weight" class="input input-bordered flex-1 mx-1" placeholder="measurement">
+        <select class="select select-primary flex-1 mx-1" [(ngModel)]="productVarient.unit">
+            <option *ngFor="let unit of measurementUnit">{{
+                unit}}</option>
+        </select>
+    </div>
+    <div class="p-2 flex flex-col my-1" *ngIf="backOffice">
+        <span class="text-lg font-bold text-gray-400">Price</span>
+        <div class="flex flex-row items-center">
+            <div class="form-control flex-1 mx-2">
+                <label class="label">
+                    <span class="label-text text-xs">Actual price</span>
+                </label>
+                <input [(ngModel)]="productVarient.price.actualPrice" (keyup)="priceChange('actual')"
+                    class="input input-bordered " placeholder="actual price">
+            </div>
+            <div class="form-control flex-1 mx-2">
+                <label class="label">
+                    <span class="label-text text-xs">Offer price</span>
+                </label>
+                <input [(ngModel)]="productVarient.price.offerPrice" (keyup)="priceChange('offer')"
+                    class="input input-bordered " placeholder="offer price">
+            </div>
+            <div class="form-control flex-1 mx-2">
+                <label class="label">
+                    <span class="label-text text-xs">Discount %</span>
+                </label>
+                <input [(ngModel)]="discountPercent" class="input input-bordered " (keyup)="priceChange('discount')"
+                    placeholder="discount %">
+            </div>
+        </div>
+        <div class="divider"></div>
+        <span class="text-lg font-bold text-gray-400">Coin Setting</span>
+        <div class="flex flex-row mt-2">
+            <input [(ngModel)]="productVarient.price.memberCoin"
+                class="input input-bordered flex-1 mx-2 border-fuchsia-600" placeholder="override member coin">
+            <input [(ngModel)]="productVarient.price.goldMemberCoin"
+                class="input input-bordered border-amber-500 flex-1 mx-2" placeholder="override gold member coin">
+            <input [(ngModel)]="productVarient.price.primeMemberCoin"
+                class="input input-bordered border-teal-600 flex-1 mx-2" placeholder="override prime member coin">
+        </div>
+    </div>
+    <div class="p-2 flex flex-col my-1" *ngIf="backOffice">
+        <div class="flex flex-row items-start">
+            <div class="form-control">
+                <label class="label cursor-pointer">
+                    <input type="checkbox" [(ngModel)]="productVarient.applyExtraShipping"
+                        class="checkbox mr-2 checkbox-primary">
+                    <span class="label-text">Apply extra shipping charges ?</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="p-2 flex flex-col my-1" *ngIf="backOffice">
+        <div class="flex flex-row items-start">
+            <div class="form-control">
+                <label class="label cursor-pointer">
+                    <input type="checkbox" [(ngModel)]="addDimension" (input)="onDimensionAdd()" class="checkbox mr-2">
+                    <span class="label-text">Add dimension ?</span>
+                </label>
+            </div>
+        </div>
+        <div class="flex flex-col animate__animated animate__flipInX " *ngIf="addDimension">
+            <span class="text-lg font-bold text-gray-400">Product Dimension</span>
+            <div class="flex flex-row mt-2">
+                <input [(ngModel)]="productVarient.dimension.height" class="input input-bordered flex-1 mx-2 "
+                    placeholder="height">
+                <input [(ngModel)]="productVarient.dimension.width" class="input input-bordered  flex-1 mx-2"
+                    placeholder="width">
+                <input [(ngModel)]="productVarient.dimension.length" class="input input-bordered  flex-1 mx-2"
+                    placeholder="length">
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-row justify-end my-2">
+        <div class="btn btn-primary mx-2" (click)="save()">Add</div>
+    </div>
+
+</div>

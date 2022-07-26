@@ -1,0 +1,8 @@
+<div class="flex flex-col">
+    <span class="text-lg font-bold text-center">Select country</span>
+    <div class="flex flex-col items-center justify-center">
+        <button *ngFor="let country of countries" (click)="setCountry(country)"
+            [ngClass]="selectedCountry._id==country._id?'btn btn-sm btn-primary my-1 w-full':'btn btn-sm btn-outline my-1  w-full'">{{country.name}}</button>
+
+    </div>
+</div>

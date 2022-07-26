@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="flex flex-row justify-center">
+        <div class="card shadow-md rounded-md h-24 w-24">
+            <img [src]="'https://cdn2.sbazar.app/'+brand.logoId" alt="provide image id">
+        </div>
+    </div>
+    <div class="flex flex-row mt-2">
+        <input type="text" placeholder="Brand name" [(ngModel)]="brand.name"
+            class="input input-bordered w-full " />
+    </div>
+    <div class="flex flex-row mt-2">
+        <app-multi-text-input class="flex-1" [label]="'Brand description'" [(displayText)]="brand.description">
+        </app-multi-text-input>
+    </div>
+    <div class="flex flex-row mt-2">
+        <input type="text" placeholder="Paste image id" [(ngModel)]="brand.logoId"
+            class="input input-bordered w-full " />
+    </div>
+    <div class="flex flex-row justify-end mt-2">
+        <tui-loader [showLoader]="isLoading">
+            <button class="btn btn-primary" (click)="save()">Save</button>
+        </tui-loader>
+    </div>
+</div>

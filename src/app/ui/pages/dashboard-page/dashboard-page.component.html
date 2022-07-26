@@ -14,29 +14,32 @@
                         <tui-accordion-item borders="top-bottom">
                             Back office manager
                             <ng-template tuiAccordionItemContent>
-                                <button *ngFor="let menu of backOfficeManagerMenu" class="flex" (click)='move(menu.link)'>
+                                <button *ngFor="let menu of backOfficeManagerMenu" class="flex"
+                                    (click)='move(menu.link)'>
                                     {{menu.name}}
                                 </button>
                             </ng-template>
                         </tui-accordion-item>
                         <tui-accordion-item borders="top-bottom">
-                          Warehouse Manager
+                            Warehouse Manager
                             <ng-template tuiAccordionItemContent>
-                                <button *ngFor="let menu of warehouseManagerMenu" class="flex" (click)='move(menu.link)'>
+                                <button *ngFor="let menu of warehouseManagerMenu" class="flex"
+                                    (click)='move(menu.link)'>
                                     {{menu.name}}
                                 </button>
                             </ng-template>
                         </tui-accordion-item>
                         <tui-accordion-item borders="top-bottom">
-                          Marketing Manager
+                            Marketing Manager
                             <ng-template tuiAccordionItemContent>
-                                <button *ngFor="let menu of marketingManagerMenu" class="flex" (click)='move(menu.link)'>
+                                <button *ngFor="let menu of marketingManagerMenu" class="flex"
+                                    (click)='move(menu.link)'>
                                     {{menu.name}}
                                 </button>
                             </ng-template>
                         </tui-accordion-item>
                         <tui-accordion-item borders="top-bottom">
-                          Customer care Manager
+                            Customer care Manager
                             <ng-template tuiAccordionItemContent>
                                 <button *ngFor="let menu of customerManagerMenu" class="flex" (click)='move(menu.link)'>
                                     {{menu.name}}
@@ -47,6 +50,8 @@
                 </div>
             </div>
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <button class="btn btn-primary btn-sm mx-2 " *ngIf="country"
+                    (click)="openCountry()">{{country.name}}</button>
                 <button type="button"
                     class="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                     <span class="sr-only">View notifications</span>
