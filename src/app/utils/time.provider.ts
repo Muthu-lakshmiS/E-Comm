@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export enum DatetimeFormatEnum {
     FULL_DATE_TIME = 'YYYY-MM-DDTHH:mm:ss.SSSSS',
     FULL_DATE_TIME_ZONED = 'YYYY-MM-DDTHH:mm:ss.SSSSSZ',
+    FULL_DATE_TIME_LOCAL = 'YYYY-MM-DDTHH:mm',
     TILL_DATE = 'YYYYMMDD',
     TILL_DATE_DOTS = 'DD.MM.YYYY.HHmm',
     TILL_MONTH = 'YYYYMM',

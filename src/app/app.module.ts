@@ -60,6 +60,11 @@ import { AddWarehouseComponent } from './ui/widgets/add-warehouse/add-warehouse.
 import { TuiToolbarModule } from '@taiga-ui/addon-editor';
 import { ProductTileComponent } from './ui/widget/product-tile/product-tile.component';
 import { GenericDialogComponent } from './ui/widgets/generic-dialog/generic-dialog.component';
+import { AddDealComponent } from './ui/widgets/add-deal/add-deal.component';
+import { AddMultiProductComponent } from './ui/widgets/add-multi-product/add-multi-product.component';
+import { CommonDialogComponent } from './ui/widgets/common-dialog/common-dialog.component';
+import { PriceWidgetComponent } from './ui/widgets/price-widget/price-widget.component';
+import { CartConstraintsWidgetComponent } from './ui/widgets/cart-constraints-widget/cart-constraints-widget.component';
 export function playerFactory() {
   return player;
 }
@@ -93,6 +98,11 @@ export function playerFactory() {
     AddWarehouseComponent,
     ProductTileComponent,
     GenericDialogComponent,
+    AddDealComponent,
+    AddMultiProductComponent,
+    CommonDialogComponent,
+    PriceWidgetComponent,
+    CartConstraintsWidgetComponent,
   ],
   imports: [
     BrowserModule,
@@ -121,7 +131,6 @@ export function playerFactory() {
     TuiTooltipModule,
     TuiHintModule,
     TuiStepperModule,
-
     LottieModule.forRoot({ player: playerFactory }),
   ],
   providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],

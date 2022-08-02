@@ -1,0 +1,37 @@
+<div class="flex flex-col my-1 w-full">
+    <span class="text-lg font-bold text-gray-400">Price</span>
+    <div class="flex flex-row items-center">
+        <div class="form-control flex-1 mx-2">
+            <label class="label">
+                <span class="label-text text-xs">Actual price</span>
+            </label>
+            <input [(ngModel)]="price.actualPrice" (keyup)="change('actual')" class="input input-bordered "
+                placeholder="actual price">
+        </div>
+        <div class="form-control flex-1 mx-2">
+            <label class="label">
+                <span class="label-text text-xs">Offer price</span>
+            </label>
+            <input [(ngModel)]="price.offerPrice" (keyup)="change('offer')" class="input input-bordered "
+                placeholder="offer price">
+        </div>
+        <div class="form-control flex-1 mx-2">
+            <label class="label">
+                <span class="label-text text-xs">Discount %</span>
+            </label>
+            <input [(ngModel)]="discountPercent" class="input input-bordered " (keyup)="change('discount')"
+                placeholder="discount %">
+        </div>
+    </div>
+    <div class="divider"></div>
+    <span class="text-lg font-bold text-gray-400">Coin Setting <span class="text-xs font-bold mx-2">[ leave empty if you
+            want to apply default coin allocation ]</span></span>
+    <div class="flex flex-row mt-2">
+        <input [(ngModel)]="price.memberCoin" class="input input-bordered flex-1 mx-2 border-fuchsia-600"
+            placeholder="override member coin">
+        <input [(ngModel)]="price.goldMemberCoin" class="input input-bordered border-amber-500 flex-1 mx-2"
+            placeholder="override gold member coin">
+        <input [(ngModel)]="price.primeMemberCoin" class="input input-bordered border-teal-600 flex-1 mx-2"
+            placeholder="override prime member coin">
+    </div>
+</div>

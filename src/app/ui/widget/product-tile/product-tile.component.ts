@@ -1,9 +1,23 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ThisReceiver } from '@angular/compiler';
+import {
+  Component,
+  EventEmitter,
+  Inject,
+  Injector,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { TuiDialogService } from '@taiga-ui/core';
+import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
 import {
   Product,
   ProductSummary,
   VarientProduct,
 } from 'src/app/models/product';
+import { ClientService } from 'src/app/service/client-service.service';
+import { NotificationService } from 'src/app/utils/notification-service';
+import { CommonDialogComponent } from '../../widgets/common-dialog/common-dialog.component';
 
 @Component({
   selector: 'app-product-tile',
@@ -19,7 +33,12 @@ export class ProductTileComponent implements OnInit {
   varientRemove: EventEmitter<string> = new EventEmitter();
   selectedVarients: number[] = [];
 
-  constructor() {}
+  constructor(
+    @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+    @Inject(Injector) private readonly injector: Injector,
+    private _clientService: ClientService,
+    private _notify: NotificationService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -41,5 +60,25 @@ export class ProductTileComponent implements OnInit {
     productSummary.images = this.product.images;
     productSummary.varient = varient;
     this.variantAdd.emit(productSummary);
+  }
+  edit(varient: VarientProduct, varientAtIndex: number) {
+    this.dialogService
+      .open<any>(
+        new PolymorpheusComponent(CommonDialogComponent, this.injector),
+        {
+          size: 'auto',
+          data: {
+            type: 'varient',
+            data: varient,
+          },
+          closeable: true,
+          dismissible: false,
+        }
+      )
+      .subscribe((response) => {
+        this.product.varients[varientAtIndex] = response as VarientProduct;
+        this._clientService.put('product', this.product._id, this.product);
+        this._notify.success({ message: 'Product varient updated' });
+      });
   }
 }

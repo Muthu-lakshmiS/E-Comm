@@ -1,4 +1,4 @@
-<div class="mx-4 my-1 rounded-lg border-primary bg-white border flex flex-col">
+<div class="mx-4 my-1 rounded-lg border-primary bg-white hover:border-primary hover:border-2 hover:transition-all border flex flex-col">
     <div class="flex flex-row items-center mx-1">
         <div class="flex flex-col flex-1">
             <span class="font-bold text-primary text-lg">{{product.name.languageTexts[0].text}}</span>
@@ -23,9 +23,9 @@
     <div class="border-t border-gray-400"></div>
    <div class="flex flex-row items-center mx-1">
     <div class=" flex overflow-x-auto  w-2/3 ">
-        <div *ngFor="let varient of product.varients"  [ngClass]="selectedVarients.includes(varient.weight)?'border-primary border rounded-md bg-red-100  mx-2 my-2 px-0.5 transition-all':'flex-shrink-0 w-40 mx-1 bg-white border-r  border-gray-400 px-1 hover:border-primary hover:border hover:rounded-md hover:bg-red-100  hover:my-2 hover:px-0.5 hover:transition-all' ">
+        <div *ngFor="let varient of product.varients;let i = index"  [ngClass]="selectedVarients.includes(varient.weight)?'border-primary border rounded-md bg-red-100  mx-2 my-2 px-0.5 transition-all':'flex-shrink-0 w-40 mx-1 bg-white border-r  border-gray-400 px-1 hover:border-primary hover:border hover:rounded-md hover:bg-red-100  hover:my-2 hover:px-0.5 hover:transition-all' ">
             <div class="flex flex-col ">
-                <span class="font-bold text-black "><span class="cursor-pointer hover:text-primary" (click)="onVarientAdd(varient)">{{varient.weight}} {{varient.unit}}</span> <button class="btn btn-link btn-sm">(edit)</button></span>
+                <span class="font-bold text-black "><span class="cursor-pointer hover:text-primary" (click)="onVarientAdd(varient)">{{varient.weight}} {{varient.unit}}</span> <button class="btn btn-link btn-sm" (click)="edit(varient,i)">(edit)</button></span>
                 <span class="font-bold text-green-800 text-sm"><span
                         class="text-gray-500 line-through">{{varient.price.actualPrice}}€</span>{{varient.price.offerPrice}}€</span>
             </div>

@@ -8,6 +8,8 @@ import {
   VarientProduct,
 } from 'src/app/models/product';
 import { ClientService } from 'src/app/service/client-service.service';
+import { AddDealComponent } from '../../widgets/add-deal/add-deal.component';
+import { AddMultiProductComponent } from '../../widgets/add-multi-product/add-multi-product.component';
 import { AddProductComponent } from '../../widgets/add-product/add-product.component';
 @Component({
   selector: 'app-product-page',
@@ -49,5 +51,32 @@ export class ProductPageComponent implements OnInit {
         })
         .subscribe();
     }
+  }
+
+  createDeal() {
+    this.dialogService
+      .open(new PolymorpheusComponent(AddDealComponent, this.injector), {
+        size: 'auto',
+        closeable: true,
+        dismissible: false,
+        data: this.selectedVarient,
+      })
+      .subscribe();
+  }
+  createMultiProduct(type: string) {
+    this.dialogService
+      .open(
+        new PolymorpheusComponent(AddMultiProductComponent, this.injector),
+        {
+          size: 'auto',
+          closeable: true,
+          dismissible: false,
+          data: {
+            type: type,
+            products: this.selectedVarient,
+          },
+        }
+      )
+      .subscribe();
   }
 }

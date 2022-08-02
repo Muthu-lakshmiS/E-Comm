@@ -1,0 +1,34 @@
+<div class="w-full">
+    <div class="flex flex-col">
+
+        <div class="divider"><span class="font-bold text-lg text-primary">Create
+                {{multiProduct.type.toLocaleLowerCase()}}</span></div>
+        <app-multi-text-input [label]="multiProduct.type+' name'" [(displayText)]="multiProduct.name">
+        </app-multi-text-input>
+        <div class="flex flex-row  ">
+            <div class="form-control w-full">
+                <label class="label">
+                    <span class="label-text">{{multiProduct.type.toLocaleLowerCase()}} Image</span>
+                </label>
+                <input class="input input-bordered  mx-1" [(ngModel)]="multiProduct.displayImageId"
+                    [placeholder]="'paste' +multiProduct.type.toLocaleLowerCase()+ ' image for app'">
+            </div>
+        </div>
+        <div class="flex flex-col my-2">
+            <span class="text-gray-500 text-sm">Product summary</span>
+            <div *ngFor="let product of multiProduct.products" class="my-1">
+                <span class="text-black text-lg ">{{product.name.languageTexts[0].text}}</span>
+                <div class="flex flex-row">
+                    <span class="font-bold text-green-600 mx-1">{{product.varient.price.offerPrice}} €</span>
+                    <span class="font-bold text-gray-600 mx-1 line-through">{{product.varient.price.actualPrice}}
+                        €</span>
+                </div>
+            </div>
+        </div>
+        <app-price-widget class="flex flex-col my-2" [(price)]="multiProduct.price"></app-price-widget>
+        <app-cart-constraints-widget class="my-2" [(constraint)]="multiProduct.constraint">
+        </app-cart-constraints-widget>
+        <div class="flex flex-row justify-end my-2">
+            <button class="btn btn-primary mx-2" (click)="save()">Save</button>
+        </div>
+    </div>
