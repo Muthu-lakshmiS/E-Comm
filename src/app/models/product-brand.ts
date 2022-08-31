@@ -7,4 +7,5 @@ export interface ProductBrand {
   description: DisplayText;
   active: boolean;
   _id: string;
+  orderBy:number;
 }

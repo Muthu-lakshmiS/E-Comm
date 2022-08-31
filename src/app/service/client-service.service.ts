@@ -75,6 +75,12 @@ export class ClientService {
     return this.callApi(ReqMethod.DELETE, path, id);
   }
 
+  public deleteData(path: string, id: string, data: any) {
+    data['metaData']['state'] = 'DELETED';
+    this.put(path, id, data);
+    location.reload();
+  }
+
   callApiSync<T>(
     method: ReqMethod,
     path: string,

@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   EventEmitter,
+  Input,
   OnInit,
   Output,
   SimpleChanges,
@@ -10,15 +11,18 @@ import {
 import { FormControl, FormGroup } from '@angular/forms';
 import { tuiReplayedValueChangesFrom } from '@taiga-ui/cdk';
 import { map } from 'rxjs/operators';
+import { DisplayText } from 'src/app/models/product-category';
 import { Doc, OpenSearchResp } from 'src/app/models/solr-resp';
 @Component({
   selector: 'app-product-autocomplete',
   templateUrl: './product-autocomplete.component.html',
-  styleUrls: ['./product-autocomplete.component.scss']
+  styleUrls: ['./product-autocomplete.component.scss'],
 })
 export class ProductAutocompleteComponent implements OnInit {
   lastRefId = '';
   lastSearchQuery = '';
+  @Input()
+  value: DisplayText = {} as DisplayText;
   @Output() select = new EventEmitter<Doc>();
   @Output() focusChange = new EventEmitter<string>();
   private readonly user = new FormControl('');
@@ -91,5 +95,15 @@ export class ProductAutocompleteComponent implements OnInit {
         this.select.emit({});
       }
     });
+    if (
+      this.value &&
+      this.value.languageTexts &&
+      this.value.languageTexts.length > 0
+    ) {
+      //@ts-ignore
+      this.testForm.setValue({
+        user: this.value.languageTexts[0].text,
+      });
+    }
   }
 }

@@ -1,0 +1,14 @@
+<div class="flex flex-col w-full">
+    <div class="flex flex-row w-full">
+        <span class="text-lg flex-1">{{purchase.product.name.languageTexts[0].text}}</span>
+        <span class=" flex-1">{{purchase.purchaseFrom.name}}</span>
+        <div class="flex flex-row">
+            <span class="text-green-600">€ {{purchase.amountTotal}}</span>/
+            <span class=" text-primary">{{purchase.consignmentDetails.totalStock}}</span>
+        </div>
+    </div>
+    <div class=" flex flex-row">
+        <span class="text-gray-500 flex-1">{{purchase.comment}}</span>
+        <a  target="_blank" [href]="'https://cdn2.sbazar.app/'+purchase.documents[0]">View Bill</a>
+    </div>
+</div>

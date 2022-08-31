@@ -16,6 +16,7 @@ import {
 } from 'src/app/models/product';
 import { AnimeUtil } from 'src/app/utils/animation-lottie';
 import { AppSession } from 'src/app/utils/app-session';
+import { NotificationService } from 'src/app/utils/notification-service';
 
 @Component({
   selector: 'app-add-product',
@@ -34,8 +35,15 @@ export class AddProductComponent implements OnInit {
     @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
     @Inject(POLYMORPHEUS_CONTEXT)
     private readonly context: TuiDialogContext<any, any>,
-    private changeDetect: ChangeDetectorRef
+    private changeDetect: ChangeDetectorRef,
+    private notify: NotificationService
   ) {
+    if (context.data) {
+      this.product = context.data as Product;
+      this.keywords = this.product.keywords.join(',');
+    }else{
+      this.product.brand = {} as Brand;
+    }
     this.productTypes.push({
       type: 'Food',
       name: 'FOOD',
@@ -44,6 +52,7 @@ export class AddProductComponent implements OnInit {
       type: 'Other',
       name: 'OTHER',
     });
+    this.product.type = 'FOOD';
     if (!this.product.marketingInfo) {
       this.product.marketingInfo = {} as MarketingInfo;
     }
@@ -95,7 +104,37 @@ export class AddProductComponent implements OnInit {
     this.isLoading = true;
     this.product.keywords = this.keywords.split(',');
     this.product.countryCode = AppSession.getValue(AppSession.Country)._id;
-    this.clientService.post<Product>('product', this.product);
+    if (!this.product.name) {
+      this.notify.error({
+        message: 'Name is required',
+      });
+      return;
+    }
+    if (!this.product.description) {
+      this.notify.error({
+        message: 'Description is required',
+      });
+    }
+    if (!this.product.keywords.length) {
+      this.notify.error({
+        message: 'Keywords is required',
+      });
+    }
+    if (!this.product.marketingInfo.socialMediaTitle) {
+      this.notify.error({
+        message: 'Marketing title is required',
+      });
+      return;
+    }
+    if (this.product._id)
+      this.clientService.put<Product>(
+        'product',
+        this.product._id,
+        this.product
+      );
+    else {
+      this.clientService.post<Product>('product', this.product);
+    }
     this.context.completeWith({});
   }
 }

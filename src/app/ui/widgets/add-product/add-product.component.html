@@ -11,28 +11,28 @@
         </tui-carousel>
     </div>
     <div class="flex flex-row my-2">
-        <app-brand-autocomplete class="flex-1 mx-1" (select)="brandAdd($event)"></app-brand-autocomplete>
+        <app-brand-autocomplete class="flex-1 mx-1" [value]="product.brand!.name" (select)="brandAdd($event)"></app-brand-autocomplete>
         <app-category-autocomplete class="flex-1 mx-1" (select)="categoryAdd($event)"></app-category-autocomplete>
     </div>
 
     <div class="flex flex-row mt-2">
-        <app-multi-text-input class="flex-1" [label]="'Name'" [(displayText)]="product.name">
+        <app-multi-text-input class="flex-1" [label]="'Name*'" [(displayText)]="product.name">
         </app-multi-text-input>
     </div>
     <div class="flex flex-row mt-2">
-        <app-multi-text-input class="flex-1" [label]="'Description'" [(displayText)]="product.description">
+        <app-multi-text-input class="flex-1" [label]="'Description*'" [(displayText)]="product.description">
         </app-multi-text-input>
     </div>
-    <input type="text" placeholder="Add product keywords separated by comma[,]" [(ngModel)]="keywords"
+    <input type="text" placeholder="Add product keywords separated by comma[,]*" [(ngModel)]="keywords"
         class="input input-bordered w-full mt-2" />
     <div class="flex flex-row mt-2 items-center">
-        <span>Product type</span><button *ngFor="let productType of productTypes"
+        <span>Product type*</span><button *ngFor="let productType of productTypes"
             [ngClass]="productType.name==product.type? 'btn btn-primary mx-1 btn-sm':'btn btn-outline mx-1 btn-sm'"
             (click)="product.type=productType.name">{{productType.name}}</button>
     </div>
     <div class="flex flex-col mt-2">
         <div class="flex flex-row justify-center items-center my-1">
-            <span class="flex-1">Product Images</span><button class="btn btn-primary btn-sm mx-2"
+            <span class="flex-1">Product Images*</span><button class="btn btn-primary btn-sm mx-2"
                 (click)="addImage()"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -58,7 +58,7 @@
         </div>
         <div class="divider my-2"></div>
         <div class="flex flex-col">
-            <span>Marketing info</span>
+            <span>Marketing info*</span>
             <div class="flex flex-row">
                 <ng-lottie class="h-60 w-auto" [options]="marketingAnimation()"></ng-lottie>
                 <div class="flex flex-col items-center flex-1">

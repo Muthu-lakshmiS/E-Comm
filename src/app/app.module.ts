@@ -29,7 +29,10 @@ import { DashboardPageComponent } from './ui/pages/dashboard-page/dashboard-page
 import {
   TuiAccordionModule,
   TuiCarouselModule,
+  TuiFileComponent,
+  TuiFilesModule,
   TuiInputCountModule,
+  TuiInputFileModule,
   TuiInputModule,
   TuiStepperModule,
   TuiTabsModule,
@@ -65,6 +68,10 @@ import { AddMultiProductComponent } from './ui/widgets/add-multi-product/add-mul
 import { CommonDialogComponent } from './ui/widgets/common-dialog/common-dialog.component';
 import { PriceWidgetComponent } from './ui/widgets/price-widget/price-widget.component';
 import { CartConstraintsWidgetComponent } from './ui/widgets/cart-constraints-widget/cart-constraints-widget.component';
+import { CategoryTileComponent } from './ui/widgets/category-tile/category-tile.component';
+import { BrandTileComponent } from './ui/widgets/brand-tile/brand-tile.component';
+import { PurchaseTileComponent } from './ui/widgets/purchase-tile/purchase-tile.component';
+import { InventoryTileComponent } from './ui/widgets/inventory-tile/inventory-tile.component';
 export function playerFactory() {
   return player;
 }
@@ -103,6 +110,10 @@ export function playerFactory() {
     CommonDialogComponent,
     PriceWidgetComponent,
     CartConstraintsWidgetComponent,
+    CategoryTileComponent,
+    BrandTileComponent,
+    PurchaseTileComponent,
+    InventoryTileComponent,
   ],
   imports: [
     BrowserModule,
@@ -127,6 +138,7 @@ export function playerFactory() {
     TuiInputCountModule,
     TuiSvgModule,
     TuiLoaderModule,
+    TuiInputFileModule,
     TuiToolbarModule,
     TuiTooltipModule,
     TuiHintModule,

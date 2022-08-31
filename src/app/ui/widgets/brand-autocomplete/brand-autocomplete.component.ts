@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   EventEmitter,
+  Input,
   OnInit,
   Output,
   SimpleChanges,
@@ -20,6 +21,8 @@ import { Doc, OpenSearchResp } from 'src/app/models/solr-resp';
 export class BrandAutocompleteComponent implements OnInit {
   lastRefId = '';
   lastSearchQuery = '';
+  @Input()
+  value:string = '';
   @Output() select = new EventEmitter<Doc>();
   @Output() focusChange = new EventEmitter<string>();
   private readonly user = new FormControl('');
@@ -92,5 +95,13 @@ export class BrandAutocompleteComponent implements OnInit {
         this.select.emit({});
       }
     });
+    if(this.value){
+      //@ts-ignore
+      this.testForm.setValue(
+        {
+          user:this.value
+        }
+      );
+    }
   }
 }

@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   EventEmitter,
+  Input,
   OnInit,
   Output,
   SimpleChanges,
@@ -10,6 +11,7 @@ import {
 import { FormControl, FormGroup } from '@angular/forms';
 import { tuiReplayedValueChangesFrom } from '@taiga-ui/cdk';
 import { map } from 'rxjs/operators';
+import { DisplayText } from 'src/app/models/product-category';
 import { Doc, OpenSearchResp } from 'src/app/models/solr-resp';
 
 @Component({
@@ -21,6 +23,8 @@ export class CategoryAutocompleteComponent implements OnInit {
 
   lastRefId = '';
   lastSearchQuery = '';
+  @Input()
+  value:string = '';
   @Output() select = new EventEmitter<Doc>();
   @Output() focusChange = new EventEmitter<string>();
   private readonly user = new FormControl('');
@@ -56,6 +60,15 @@ export class CategoryAutocompleteComponent implements OnInit {
 
   getLogo(response: any) {
     return 'https://cdn2.sbazar.app/' + JSON.parse(response).logoId;
+  }
+  isParentCat(response: any) {
+    return JSON.parse(response).parentCategoryId;
+  }
+  parentCategoryName(response: any) {
+    return (JSON.parse(response).parent.name as DisplayText).languageTexts[0].text;
+  }
+  parentCategoryImage(response: any) {
+    return 'https://cdn2.sbazar.app/'+JSON.parse(response).parent.logoId;
   }
 
   onSearch(value: string) {
@@ -93,5 +106,13 @@ export class CategoryAutocompleteComponent implements OnInit {
         this.select.emit({});
       }
     });
+    if(this.value){
+      //@ts-ignore
+      this.testForm.setValue(
+        {
+          user:this.value
+        }
+      );
+    }
   }
 }

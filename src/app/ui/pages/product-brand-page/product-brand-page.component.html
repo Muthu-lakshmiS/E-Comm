@@ -1,1 +1,2 @@
 <app-page-header [header]="'Product Brand'" (event)="event($event)"></app-page-header>
+<app-brand-tile *ngFor="let brand of brands" [brand]="brand"></app-brand-tile>

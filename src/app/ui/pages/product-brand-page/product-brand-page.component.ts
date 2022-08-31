@@ -1,6 +1,8 @@
 import { Component, Inject, Injector, OnInit } from '@angular/core';
 import { TuiDialogService } from '@taiga-ui/core';
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
+import { ProductBrand } from 'src/app/models/product-brand';
+import { ClientService } from 'src/app/service/client-service.service';
 import { AddBrandComponent } from '../../widgets/add-brand/add-brand.component';
 
 @Component({
@@ -9,12 +11,19 @@ import { AddBrandComponent } from '../../widgets/add-brand/add-brand.component';
   styleUrls: ['./product-brand-page.component.scss'],
 })
 export class ProductBrandPageComponent implements OnInit {
+  brands:ProductBrand[] = [];
   constructor(
     @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
-    @Inject(Injector) private readonly injector: Injector
+    @Inject(Injector) private readonly injector: Injector,
+    private clientService:ClientService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.search();
+  }
+  async search() {
+    this.brands = await this.clientService.post('brand/search',{});
+  }
 
   event(eventName: any) {
     if (eventName.event == 'add') {

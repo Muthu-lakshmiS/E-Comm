@@ -37,7 +37,7 @@ export class ProductPageComponent implements OnInit {
   }
   removeVarient(productVarientId: string) {
     this.selectedVarient = this.selectedVarient.filter((item) => {
-      return item.id + '@' + item.varient.varientCode !== productVarientId;
+      return item._id + '@' + item.varient.varientCode !== productVarientId;
     });
   }
 

@@ -23,9 +23,13 @@ export class AppComponent {
       clientService.setAuthToken(
         AppSession.getValue(AppSession.LoginAuth).accessToken
       );
+      if (location.pathname == '/') {
+        router.navigate(['dashboard/product']);
+      }
+
       if (!AppSession.checkSession(AppSession.Country)) {
         this.openCountry();
-      }else{
+      } else {
       }
       // router.navigate(['dashboard/product-brand']);
     } else router.navigate(['login']);

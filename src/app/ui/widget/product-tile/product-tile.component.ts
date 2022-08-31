@@ -17,6 +17,7 @@ import {
 } from 'src/app/models/product';
 import { ClientService } from 'src/app/service/client-service.service';
 import { NotificationService } from 'src/app/utils/notification-service';
+import { AddProductComponent } from '../../widgets/add-product/add-product.component';
 import { CommonDialogComponent } from '../../widgets/common-dialog/common-dialog.component';
 
 @Component({
@@ -56,10 +57,25 @@ export class ProductTileComponent implements OnInit {
     productSummary.countryCode = this.product.countryCode;
     productSummary.name = this.product.name;
     productSummary.description = this.product.description;
-    productSummary.id = this.product._id;
+    productSummary._id = this.product._id;
     productSummary.images = this.product.images;
     productSummary.varient = varient;
     this.variantAdd.emit(productSummary);
+  }
+  editProduct() {
+    this.dialogService
+      .open<any>(
+        new PolymorpheusComponent(AddProductComponent, this.injector),
+        {
+          size: 'auto',
+          data: this.product,
+          closeable: true,
+          dismissible: false,
+        }
+      )
+      .subscribe((response) => {
+        this._notify.success({ message: 'Product  updated' });
+      });
   }
   edit(varient: VarientProduct, varientAtIndex: number) {
     this.dialogService

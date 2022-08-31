@@ -27,10 +27,15 @@ export class MultiTextInputComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.selectedLanguage.language = 'en';
     if (!this.displayText) {
       this.displayText = {} as DisplayText;
     }
-    if (!this.displayText.languageTexts) this.displayText.languageTexts = [];
+    if (!this.displayText.languageTexts) {
+      this.displayText.languageTexts = [];
+    } else {
+      this.selectedLanguage = this.displayText.languageTexts[0];
+    }
   }
 
   onLanguageClick(language: LanguageText) {

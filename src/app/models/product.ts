@@ -17,7 +17,7 @@ export interface Product {
 }
 
 export interface ProductSummary {
-  id: string;
+  _id: string;
   name: DisplayText;
   description: DisplayText;
   images: string[];

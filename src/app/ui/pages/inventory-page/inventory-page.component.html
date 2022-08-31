@@ -1,1 +1,4 @@
-<p>inventory-page works!</p>
+<div class="w-full p-2">
+    <app-inventory-tile *ngFor="let inventory of inventories" [inventory]="inventory"
+        class="bg-white p-2 mt-2 rounded-md border-2 border-gray-400 flex flex-row w-full"></app-inventory-tile>
+</div>

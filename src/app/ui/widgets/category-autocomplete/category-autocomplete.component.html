@@ -11,7 +11,10 @@
                         <div class="w-12 rounded">
                           <img [src]="getLogo(user.extraData)" alt="Tailwind-CSS-Avatar-component" />
                         </div>
-                      </div>  <span class="font-bold ml-2 "> {{user.name}}</span>
+                      </div>  <div class="flex flex-col">
+                        <span class="font-bold ml-2 "> {{user.name}} {{isParentCat(user.extraData)?'[P]':'[C]'}}</span>
+                        <div *ngIf="isParentCat(user.extraData)" class="text-gray-400 flex flex-row text-sm items-center"><img [src]="parentCategoryImage(user.extraData)" class="w-6 h-6 rounded-md m-2">{{parentCategoryName(user.extraData)}}</div>
+                      </div>
                    </div>
 
                 </button>

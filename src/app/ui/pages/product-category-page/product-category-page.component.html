@@ -1,1 +1,4 @@
-<app-page-header [header]="'Product category'" [headerAnime]="getHeaderAnime()" (event)="event($event)"></app-page-header>
+<app-page-header [header]="'Product category'" [headerAnime]="getHeaderAnime()" (event)="event($event)">
+</app-page-header>
+
+<app-category-tile *ngFor="let category of categories" [category]="category"></app-category-tile>

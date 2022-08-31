@@ -7,7 +7,7 @@ import { POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus';
 @Component({
   selector: 'app-add-brand',
   templateUrl: './add-brand.component.html',
-  styleUrls: ['./add-brand.component.scss']
+  styleUrls: ['./add-brand.component.scss'],
 })
 export class AddBrandComponent implements OnInit {
   isLoading = false;
@@ -17,16 +17,30 @@ export class AddBrandComponent implements OnInit {
     @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
     @Inject(POLYMORPHEUS_CONTEXT)
     private readonly context: TuiDialogContext<any, any>
-  ) {}
+  ) {
+    if (context.data) {
+      this.brand = context.data as ProductBrand;
+    }
+  }
 
   ngOnInit(): void {}
 
   async save() {
     this.isLoading = true;
-    let brand = await this.clientService.post<ProductBrand>(
-      'brand',
-      this.brand
-    );
-    this.context.completeWith(brand);
+    this.brand.active = true;
+    if (this.brand._id) {
+      let brand = await this.clientService.put<ProductBrand>(
+        'brand',
+        this.brand._id,
+        this.brand
+      );
+      this.context.completeWith(brand);
+    } else {
+      let brand = await this.clientService.post<ProductBrand>(
+        'brand',
+        this.brand
+      );
+      this.context.completeWith(brand);
+    }
   }
 }
